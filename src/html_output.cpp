@@ -123,7 +123,7 @@ void html_output_t::write_js_charts_head_links(FILE *out_fp)
             //fputs("<script src=\"https://code.highcharts.com/maps/7.0/modules/map.js\"></script>\n", out_fp);
             //fputs("<script src=\"https://code.highcharts.com/mapdata/1.1/custom/world.js\"></script>\n", out_fp);
             fputs("<script src=\"https://code.highcharts.com/maps/modules/map.js\"></script>\n", out_fp);
-            fputs("<script src=\"https://code.highcharts.com/mapdata/custom/world-highres3.js\"></script>\n", out_fp);
+            fputs("<script src=\"https://code.highcharts.com/mapdata/custom/world.js\"></script>\n", out_fp);
          }
       }
    }
