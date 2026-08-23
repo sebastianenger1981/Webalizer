@@ -1,6 +1,7 @@
 /*
    webalizer - a web server log analysis program
 
+   Copyright (c) 2026, Sebastian Enger, M.Sc. (https://www.artikelschreiber.com/, https://www.artikelschreiben.com/, https://www.unaique.com/, https://www.unaique.de/, https://www.unaique.net/, Email: Sebastian.Enger@artikelschreiber.com) 
    Copyright (c) 2004-2022, Stone Steps Inc. (www.stonesteps.ca)
    Copyright (C) 1997-2001  Bradford L. Barrett (brad@mrunix.net)
 
@@ -115,11 +116,14 @@ void html_output_t::write_js_charts_head_links(FILE *out_fp)
    if(config.js_charts_paths.empty()) {
       if(config.js_charts == "highcharts") {
          // link to a Highcharts package within the 7.0 release, so we get bug fixes, but no major changes
-         fputs("<script type=\"text/javascript\" src=\"https://code.highcharts.com/stock/7.0/highstock.js\"></script>\n", out_fp);
+         //fputs("<script type=\"text/javascript\" src=\"https://code.highcharts.com/stock/7.0/highstock.js\"></script>\n", out_fp);
+         fputs("<script type=\"text/javascript\" src=\"https://code.highcharts.com/stock/highstock.js\"></script>\n", out_fp);
 
          if(config.js_charts_map) {
-            fputs("<script src=\"https://code.highcharts.com/maps/7.0/modules/map.js\"></script>\n", out_fp);
-            fputs("<script src=\"https://code.highcharts.com/mapdata/1.1/custom/world.js\"></script>\n", out_fp);
+            //fputs("<script src=\"https://code.highcharts.com/maps/7.0/modules/map.js\"></script>\n", out_fp);
+            //fputs("<script src=\"https://code.highcharts.com/mapdata/1.1/custom/world.js\"></script>\n", out_fp);
+            fputs("<script src=\"https://code.highcharts.com/maps/modules/map.js\"></script>\n", out_fp);
+            fputs("<script src=\"https://code.highcharts.com/mapdata/custom/world-highres3.js\"></script>\n", out_fp);
          }
       }
    }
@@ -348,6 +352,12 @@ void html_output_t::write_html_head(const char *report_title, FILE *out_fp, page
 
    /* Standard header comments */
    fprintf(out_fp,"<!--  Stone Steps Webalizer  Ver. %s\n\n", state_t::get_app_version(false).c_str());
+   fputs("     Copyright (c) 2026, Sebastian Enger, M.Sc.\n", out_fp);
+   fputs("             https://www.artikelschreiber.com/\n", out_fp);
+   fputs("             https://www.artikelschreiben.com/\n", out_fp);
+   fputs("             https://www.unaique.net/\n", out_fp);
+   fputs("             https://www.unaique.com/\n", out_fp);
+   fputs("             https://www.unaique.de/\n\n", out_fp);
    fputs("     Copyright (c) 2004-2022, Stone Steps Inc.\n", out_fp);
    fputs("             http://www.stonesteps.ca\n\n", out_fp);
    fputs("       Based on v2.01.10 of The Webalizer\n", out_fp);
@@ -363,7 +373,7 @@ void html_output_t::write_html_head(const char *report_title, FILE *out_fp, page
    fprintf(out_fp, "<html lang=\"%s\">\n<head>\n", config.lang.language_code);
    fprintf(out_fp,"<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n");
    if(config.html_meta_noindex)
-      fputs("<meta name=\"robots\" content=\"noindex,nofollow\">\n", out_fp);
+      fputs("<meta name=\"robots\" content=\"noindex,follow\">\n", out_fp);
    fprintf(out_fp,"<title>%s %s - %s</title>\n", config.rpt_title.c_str(), config.hname.c_str(), report_title);
    fprintf(out_fp,"<link rel=\"stylesheet\" type=\"text/css\" href=\"%swebalizer.css\">\n", !config.html_css_path.isempty() ? config.html_css_path.c_str() : "");
    if(!config.html_js_path.isempty())
@@ -461,11 +471,17 @@ void html_output_t::write_html_tail(FILE *out_fp)
    fputs("\n<!-- Page Footer -->\n", out_fp);
    fputs("<div class=\"page_footer_div\">\n", out_fp);
 
-   fprintf(out_fp,"<a href=\"http://www.stonesteps.ca/webalizer\">Stone Steps Webalizer</a> (v%s)\n", state_t::get_app_version(false).c_str());
+   fprintf(out_fp,"<a href=\"https://www.artikelschreiber.com/\" rel=\"noopener\" title=\"ArtikelSchreiber.com - SaaS Text Generator Platform for Free\">ArtikelSchreiber.com</a> (v%s)\n", state_t::get_app_version(false).c_str());
+   fprintf(out_fp,"<a href=\"https://www.artikelschreiben.com/\" rel=\"noopener\" title=\"ArtikelSchreiben.com - SaaS Text Generator Platform for Free\">ArtikelSchreiben.com</a> (v%s)\n", state_t::get_app_version(false).c_str());
+   fprintf(out_fp,"<a href=\"https://www.unaique.com/\" rel=\"noopener\" title=\"SaaS Text Generator Platform for Free\">UNAIQUE.com</a> (v%s)\n", state_t::get_app_version(false).c_str());
+   fprintf(out_fp,"<a href=\"https://www.unaique.net/\" rel=\"noopener\" title=\"SaaS Text Generator Platform for Free\">UNAIQUE.net</a> (v%s)\n", state_t::get_app_version(false).c_str());
+   fprintf(out_fp,"<a href=\"https://www.unaique.de/\" rel=\"noopener\" title=\"SaaS Text Generator Platform for Free\">UNAIQUE.de</a> (v%s)\n", state_t::get_app_version(false).c_str());
+   fprintf(out_fp,"<a href=\"https://github.com/sebastianenger1981/Webalizer\" rel=\"noopener\" title=\"Webalizer\">Step Stone Webalizer (optimized by Sebastian Enger, M.Sc.)</a> (v%s)\n", state_t::get_app_version(false).c_str());
+  
    fputs("</div>\n", out_fp);
 
    /* wind up, this is the end of the file */
-   fprintf(out_fp,"\n<!-- Stone Steps Webalizer Version %s -->\n", state_t::get_app_version(false).c_str());
+   fprintf(out_fp,"\n<!-- Webalizer Version %s -->\n", state_t::get_app_version(false).c_str());
    if (!config.html_end.isempty())
    {
       for(iter = config.html_end.begin(); iter != config.html_end.end(); iter++)

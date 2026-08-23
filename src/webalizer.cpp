@@ -1,6 +1,7 @@
 /*
    webalizer - a web server log analysis program
 
+   Copyright (c) 2026, Sebastian Enger, M.Sc. (https://www.artikelschreiber.com/, https://www.artikelschreiben.com/, https://www.unaique.com/, https://www.unaique.de/, https://www.unaique.net/, Email: Sebastian.Enger@artikelschreiber.com) 
    Copyright (c) 2004-2023, Stone Steps Inc. (www.stonesteps.ca)
    Copyright (C) 1997-2001  Bradford L. Barrett (brad@mrunix.net)
 

@@ -1,7 +1,7 @@
 /*
    webalizer - a web server log analysis program
 
-   Copyright (c) 2006, Sebastian Enger, M.Sc. (https://www.artikelschreiber.com/, https://www.artikelschreiben.com/, https://www.unaique.com/, https://www.unaique.de/, https://www.unaique.net/, Email: Sebastian.Enger@artikelschreiber.com) 
+   Copyright (c) 2026, Sebastian Enger, M.Sc. (https://www.artikelschreiber.com/, https://www.artikelschreiben.com/, https://www.unaique.com/, https://www.unaique.de/, https://www.unaique.net/, Email: Sebastian.Enger@artikelschreiber.com) 
    Copyright (c) 2004-2022, Stone Steps Inc. (www.stonesteps.ca)
    Copyright (C) 1997-2001  Bradford L. Barrett (brad@mrunix.net)
 
@@ -17,7 +17,7 @@
 //
 #define VERSION_MAJOR           6
 #define VERSION_MINOR           6
-#define VERSION_PATCH           0
+#define VERSION_PATCH           3
 
 //
 // BUILD_NUMBER is assigned in webalizer_release.props from the value of
